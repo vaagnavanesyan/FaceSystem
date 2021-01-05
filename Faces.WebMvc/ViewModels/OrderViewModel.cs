@@ -6,7 +6,7 @@ namespace Faces.WebMvc.ViewModels
 {
     public class OrderViewModel
     {
-        [Display(Name = "Order Id" )]
+        [Display(Name = "Order Id")]
         public Guid OrderId { get; set; }
 
         [Display(Name = "Email")]
