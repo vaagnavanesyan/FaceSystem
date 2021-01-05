@@ -1,8 +1,7 @@
 ﻿using Faces.WebMvc.Models;
 using Faces.WebMvc.ViewModels;
 using MassTransit;
-using Messaging.InterfacesConstants.Commands;
-using Messaging.InterfacesConstants.Constants;
+using Faces.Shared.Messaging.InterfacesConstants;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

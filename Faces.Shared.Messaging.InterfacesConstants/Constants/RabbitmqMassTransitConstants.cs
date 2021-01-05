@@ -1,4 +1,4 @@
-﻿namespace Messaging.InterfacesConstants.Constants
+﻿namespace Faces.Shared.Messaging.InterfacesConstants
 {
     public class RabbitmqMassTransitConstants
     {

@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace FacesApi.Controllers
+namespace Faces.FacesApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,8 +25,8 @@ namespace FacesApi.Controllers
         private List<byte[]> GetFaces(byte[] image)
         {
             Mat source = Cv2.ImDecode(image, ImreadModes.Color);
-            source.SaveImage("image.jpg", new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
-            var file = Path.Combine(Directory.GetCurrentDirectory(), "Cascades", "haarcascade_frontalface_default.xml");
+            source.SaveImage(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "image.jpg"), new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
+            var file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cascades", "haarcascade_frontalface_default.xml");
             CascadeClassifier faceCascade = new CascadeClassifier();
             faceCascade.Load(file);
             var faceRects = faceCascade.DetectMultiScale(source, 1.1, 6, HaarDetectionType.DoRoughSearch, new Size(60, 60));
@@ -35,7 +36,7 @@ namespace FacesApi.Controllers
             {
                 var face = new Mat(source, rect);
                 faces.Add(face.ToBytes(".jpg"));
-                face.SaveImage("face" + j + ".jpg", new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
+                face.SaveImage(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "face" + j + ".jpg"), new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
                 j++;
             }
             return faces;

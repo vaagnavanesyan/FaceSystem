@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace FacesApiTest
+namespace Faces.Tests.FacesApiTest
 {
     class Program
     {
         static async Task Main(string[] args)
         {
             var imagePath = @"oscars-2017.jpg";
-            var urlAddress = @"http://localhost:6000/api/faces";
+            var urlAddress = @"http://localhost:5000/api/faces";
             var utils = new ImageUtility();
-            var bytes = utils.ConvertToBytes(imagePath);
+            var bytes = utils.ConvertToBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, imagePath));
             List<byte[]> faces = null;
             var byteContent = new ByteArrayContent(bytes);
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
@@ -27,7 +28,7 @@ namespace FacesApiTest
             }
             for (int i = 0; i < faces.Count; i++)
             {
-                utils.SaveToFile(faces[i], Path.Combine(Directory.GetCurrentDirectory(), $"face{i}.jpg"));
+                utils.SaveToFile(faces[i], Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"face{i}.jpg"));
             }
         }
     }

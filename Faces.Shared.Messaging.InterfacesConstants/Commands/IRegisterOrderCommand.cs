@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Messaging.InterfacesConstants.Commands
+namespace Faces.Shared.Messaging.InterfacesConstants
 {
     public interface IRegisterOrderCommand
     {

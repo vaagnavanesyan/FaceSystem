@@ -2,7 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace FacesApiTest
+namespace Faces.Tests.FacesApiTest
 {
     public class ImageUtility
     {
