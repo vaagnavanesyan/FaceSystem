@@ -1,14 +1,13 @@
+using Faces.Shared.Messaging.InterfacesConstants;
+using GreenPipes;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Ordering.OrdersApi.Messages.Consumers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ordering.OrdersApi
 {
@@ -24,6 +23,22 @@ namespace Ordering.OrdersApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<RegisterOrderCommandConsumer>();
+
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.ReceiveEndpoint(RabbitmqMassTransitConstants.RegisterOrderCommandQueue, e =>
+                    {
+                        e.PrefetchCount = 16;
+                        e.UseMessageRetry(x => x.Interval(2, TimeSpan.FromSeconds(10)));
+                        e.ConfigureConsumer<RegisterOrderCommandConsumer>(context);
+                    });
+                });
+            });
+
+            services.AddMassTransitHostedService();
 
             services.AddControllers();
         }

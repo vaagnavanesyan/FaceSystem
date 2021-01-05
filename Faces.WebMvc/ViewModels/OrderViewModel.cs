@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Faces.Shared.Messaging.InterfacesConstants;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Faces.WebMvc.ViewModels
 {
-    public class OrderViewModel
+    public class OrderViewModel: IRegisterOrderCommand
     {
         [Display(Name = "Order Id")]
         public Guid OrderId { get; set; }
@@ -16,7 +17,7 @@ namespace Faces.WebMvc.ViewModels
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "Image URL")]
-        public string ImageUrl { get; set; }
+        public string PictureUri { get; set; }
 
         [Display(Name = "Order Status")]
         public string StatusString { get; set; }

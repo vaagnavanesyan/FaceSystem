@@ -43,7 +43,7 @@ namespace Faces.WebMvc.Controllers
             }
             model.OrderId = Guid.NewGuid();
             model.ImageData = memory.ToArray();
-            model.ImageUrl = model.ImageFile.FileName;
+            model.PictureUri = model.ImageFile.FileName;
             var sendToUri = new Uri(RabbitmqMassTransitConstants.RabbitmqUri + RabbitmqMassTransitConstants.RegisterOrderCommandQueue);
             var endpoint = await _sendEndpointProvider.GetSendEndpoint(sendToUri);
             await endpoint.Send<IRegisterOrderCommand>(new
@@ -51,7 +51,7 @@ namespace Faces.WebMvc.Controllers
                 model.OrderId,
                 model.UserEmail,
                 model.ImageData,
-                model.ImageUrl
+                model.PictureUri
             });
             ViewData["OrderId"] = model.OrderId;
             return View("Thanks");
