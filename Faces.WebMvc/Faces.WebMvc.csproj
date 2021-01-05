@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="7.1.1" />
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.1" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.1" />
+    <PackageReference Include="MassTransit" Version="7.1.2" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
   </ItemGroup>
 
