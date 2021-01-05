@@ -30,8 +30,8 @@ namespace Faces.WebMvc
                 {
                     cfg.Host("localhost", "/"/*, h => { }*/);
                     services.AddSingleton(provider => provider.GetRequiredService<IBusControl>());
-                    services.AddSingleton<IHostedService, BusService>();        
-                     
+                    services.AddSingleton<IHostedService, BusService>();
+
                 }
                 ));
             services.AddControllersWithViews();
