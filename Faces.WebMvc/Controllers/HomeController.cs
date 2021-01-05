@@ -1,7 +1,7 @@
-﻿using Faces.WebMvc.Models;
+﻿using Faces.Shared.Messaging.InterfacesConstants;
+using Faces.WebMvc.Models;
 using Faces.WebMvc.ViewModels;
 using MassTransit;
-using Faces.Shared.Messaging.InterfacesConstants;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,12 +14,12 @@ namespace Faces.WebMvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IBusControl _busControl;
+        private readonly ISendEndpointProvider _sendEndpointProvider;
 
-        public HomeController(ILogger<HomeController> logger, IBusControl busControl)
+        public HomeController(ILogger<HomeController> logger, ISendEndpointProvider sendEndpointProvider)
         {
             _logger = logger;
-            _busControl = busControl;
+            _sendEndpointProvider = sendEndpointProvider;
         }
 
         public IActionResult Index()
@@ -45,8 +45,8 @@ namespace Faces.WebMvc.Controllers
             model.ImageData = memory.ToArray();
             model.ImageUrl = model.ImageFile.FileName;
             var sendToUri = new Uri(RabbitmqMassTransitConstants.RabbitmqUri + RabbitmqMassTransitConstants.RegisterOrderCommandQueue);
-            var endPoint = await _busControl.GetSendEndpoint(sendToUri);
-            await endPoint.Send<IRegisterOrderCommand>(new
+            var endpoint = await _sendEndpointProvider.GetSendEndpoint(sendToUri);
+            await endpoint.Send<IRegisterOrderCommand>(new
             {
                 model.OrderId,
                 model.UserEmail,
