@@ -29,6 +29,12 @@ namespace Ordering.OrdersApi
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
+                    cfg.Host("localhost", "/", host =>
+                    {
+                        host.Username(RabbitmqMassTransitConstants.UserName);
+                        host.Password(RabbitmqMassTransitConstants.Password);
+                    });
+
                     cfg.ReceiveEndpoint(RabbitmqMassTransitConstants.RegisterOrderCommandQueue, e =>
                     {
                         e.PrefetchCount = 16;

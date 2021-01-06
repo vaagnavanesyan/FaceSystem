@@ -17,7 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5AAD1829
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{F398C035-1CE0-4005-8D3D-414A7587890B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.OrdersApi", "Ordering.OrdersApi\Ordering.OrdersApi.csproj", "{0C58E959-B00F-44DD-A63A-2AF7503624C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.OrdersApi", "Ordering.OrdersApi\Ordering.OrdersApi.csproj", "{0C58E959-B00F-44DD-A63A-2AF7503624C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildFramework", "BuildFramework", "{1AF0DBDA-126B-4723-9A49-42AFEE5D874A}"
+	ProjectSection(SolutionItems) = preProject
+		BuildFramework\Create-Cluster.ps1 = BuildFramework\Create-Cluster.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,3 +1,4 @@
+using Faces.Shared.Messaging.InterfacesConstants;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,7 +21,14 @@ namespace Faces.WebMvc
         {
             services.AddMassTransit(x =>
             {
-                x.UsingRabbitMq();
+                x.UsingRabbitMq((context, cfg) => {
+                    cfg.Host("localhost", "/", host =>
+                     {
+                         host.Username(RabbitmqMassTransitConstants.UserName);
+                         host.Password(RabbitmqMassTransitConstants.Password);
+     
+                     });
+                });
             });
 
             services.AddMassTransitHostedService();
