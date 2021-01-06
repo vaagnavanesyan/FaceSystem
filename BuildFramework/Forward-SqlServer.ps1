@@ -1,0 +1,1 @@
+kubectl port-forward services/mssql-mssql-linux 1433:1433
