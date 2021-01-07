@@ -12,7 +12,8 @@ namespace Faces.Tests.FacesApiTest
         static async Task Main(string[] args)
         {
             var imagePath = @"oscars-2017.jpg";
-            var urlAddress = @"http://localhost:5000/api/faces";
+            var orderId = Guid.NewGuid();
+            var urlAddress = @$"http://localhost:5000/api/faces/{orderId}";
             var utils = new ImageUtility();
             var bytes = utils.ConvertToBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, imagePath));
             List<byte[]> faces = null;
@@ -23,7 +24,8 @@ namespace Faces.Tests.FacesApiTest
                 using (var response = await httpClient.PostAsync(urlAddress, byteContent))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    faces = JsonSerializer.Deserialize<List<byte[]>>(apiResponse);
+                    var result = JsonSerializer.Deserialize<Dictionary<Guid, List<byte[]>>>(apiResponse);
+                    faces = result[orderId];
                 }
             }
             for (int i = 0; i < faces.Count; i++)

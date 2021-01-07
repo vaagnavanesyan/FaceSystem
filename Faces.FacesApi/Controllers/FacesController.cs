@@ -11,14 +11,14 @@ namespace Faces.FacesApi.Controllers
     [ApiController]
     public class FacesController : ControllerBase
     {
-        [HttpPost]
-        public async Task<List<byte[]>> ReadFaces()
+        [HttpPost("{orderId}")]
+        public async Task<Dictionary<Guid, List<byte[]>>> ReadFaces(Guid orderId)
         {
             using (var ms = new MemoryStream(2048))
             {
                 await Request.Body.CopyToAsync(ms);
                 var faces = GetFaces(ms.ToArray());
-                return faces;
+                return new Dictionary<Guid, List<byte[]>> { { orderId, faces } };
             }
         }
 
