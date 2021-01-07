@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="oscars-2017.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="oscars-2017.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
