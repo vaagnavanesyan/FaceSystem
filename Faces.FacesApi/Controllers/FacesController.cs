@@ -31,13 +31,11 @@ namespace Faces.FacesApi.Controllers
             faceCascade.Load(file);
             var faceRects = faceCascade.DetectMultiScale(source, 1.1, 6, HaarDetectionType.DoRoughSearch, new Size(60, 60));
             var faces = new List<byte[]>();
-            int j = 0;
-            foreach (var rect in faceRects)
+            for (int i = 0; i < faceRects.Length; i++)
             {
-                var face = new Mat(source, rect);
+                var face = new Mat(source, faceRects[i]);
                 faces.Add(face.ToBytes(".jpg"));
-                face.SaveImage(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "face" + j + ".jpg"), new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
-                j++;
+                face.SaveImage(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "face" + i + ".jpg"), new ImageEncodingParam(ImwriteFlags.JpegProgressive, 255));
             }
             return faces;
         }
