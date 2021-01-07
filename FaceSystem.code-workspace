@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "BuildFramework",
+			"path": "BuildFramework"
+		},
+		{
+			"name": "Faces.FacesApi",
+			"path": "Faces.FacesApi"
+		},
+		{
+			"path": "Faces.Shared.Messaging.InterfacesConstants"
+		},
+		{
+			"path": "Faces.Tests.FacesApiTest"
+		},
+		{
+			"path": "Faces.WebMvc"
+		},
+		{
+			"path": "Ordering.OrdersApi"
+		}
+	],
+	"settings": {}
+}
