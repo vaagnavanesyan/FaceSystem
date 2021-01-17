@@ -22,6 +22,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildFramework", "BuildFramework", "{1AF0DBDA-126B-4723-9A49-42AFEE5D874A}"
 	ProjectSection(SolutionItems) = preProject
 		BuildFramework\Create-Cluster.ps1 = BuildFramework\Create-Cluster.ps1
+		BuildFramework\Forward-RabbitMq.ps1 = BuildFramework\Forward-RabbitMq.ps1
+		BuildFramework\Forward-SqlServer.ps1 = BuildFramework\Forward-SqlServer.ps1
+		BuildFramework\Install-Deps.ps1 = BuildFramework\Install-Deps.ps1
 	EndProjectSection
 EndProject
 Global
