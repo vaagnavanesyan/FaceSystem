@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Faces.WebMvc.ViewModels
 {
-    public class OrderViewModel: IRegisterOrderCommand
+    public class OrderViewModel : IRegisterOrderCommand
     {
         [Display(Name = "Order Id")]
         public Guid OrderId { get; set; }
@@ -20,8 +20,11 @@ namespace Faces.WebMvc.ViewModels
         public string PictureUri { get; set; }
 
         [Display(Name = "Order Status")]
-        public string StatusString { get; set; }
-
+        public string OrderStatus { get; set; }
+        
+        [Display(Name = "Image")]
+        public string ImageString { get; set; }
+        
         public byte[] ImageData { get; set; }
     }
 }

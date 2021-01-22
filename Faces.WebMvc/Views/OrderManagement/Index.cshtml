@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Faces.WebMvc.ViewModels.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Orders | FaceSystems";
+}
+
+<h1>Your orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PictureUri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageString)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="order" onclick="@Url.Action("Details", "OrderManagement", new { orderId = item.OrderId})">
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureUri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                </td>
+                <td>
+                    <img src="@(item.ImageString)" alt="order-image" class="order-image" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

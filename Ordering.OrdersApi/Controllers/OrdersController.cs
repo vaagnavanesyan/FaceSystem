@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Ordering.OrdersApi.Models;
 using Ordering.OrdersApi.Persistence;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace Ordering.OrdersApi.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var orders = await orderRepository.GetOrdersAsync();
+            foreach (var order in orders)
+            {
+                order.OrderStatus = Enum.GetName(typeof(Status), order.Status);
+            }
             return Ok(orders);
         }
 
