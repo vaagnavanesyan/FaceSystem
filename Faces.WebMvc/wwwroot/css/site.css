@@ -72,6 +72,9 @@ body {
 .order {
     cursor: pointer;
 }
-.order-image {
+.order-preview {
     width: 250px;
+}
+.order-image{
+    width: 600px;
 }
