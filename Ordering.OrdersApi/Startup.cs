@@ -26,6 +26,7 @@ namespace Ordering.OrdersApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<OrdersContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OrdersContextConnectionString")));
+            services.AddHttpClient();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddMassTransit(x =>
             {

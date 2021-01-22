@@ -11,20 +11,20 @@ namespace Faces.WebMvc.RestClients
 {
     public class OrderManagementApi : IOrderManagementApi
     {
-        private IOrderManagementApi restClient;
+        private IOrderManagementApi _restClient;
 
         public OrderManagementApi(IConfiguration configuration, HttpClient httpClient)
         {
             var ordersApiLocation = configuration.GetSection("ApiServiceLocations").GetValue<string>("OrdersApi");
             httpClient.BaseAddress = new Uri($"http://{ordersApiLocation}/api");
-            restClient = RestService.For<IOrderManagementApi>(httpClient);
+            _restClient = RestService.For<IOrderManagementApi>(httpClient);
         }
 
         public Task<OrderViewModel> GetOrderById(Guid orderId)
         {
             try
             {
-                return restClient.GetOrderById(orderId);
+                return _restClient.GetOrderById(orderId);
             }
             catch (ApiException ex)
             {
@@ -39,7 +39,7 @@ namespace Faces.WebMvc.RestClients
 
         public Task<List<OrderViewModel>> GetOrders()
         {
-            return restClient.GetOrders();
+            return _restClient.GetOrders();
         }
     }
 }
