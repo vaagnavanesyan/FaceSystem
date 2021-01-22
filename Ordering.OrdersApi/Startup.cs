@@ -49,7 +49,14 @@ namespace Ordering.OrdersApi
             });
 
             services.AddMassTransitHostedService();
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                .AllowAnyMethod()
+                .SetIsOriginAllowed(e => true)
+                .AllowCredentials()
+                .AllowAnyHeader());
+            });
             services.AddControllers();
         }
 
@@ -60,6 +67,8 @@ namespace Ordering.OrdersApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
