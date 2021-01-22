@@ -1,4 +1,5 @@
 using Faces.Shared.Messaging.InterfacesConstants;
+using Faces.WebMvc.RestClients;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,7 @@ namespace Faces.WebMvc
                      });
                 });
             });
-
+            services.AddHttpClient<IOrderManagementApi, OrderManagementApi>();
             services.AddMassTransitHostedService();
             services.AddControllersWithViews();
         }
