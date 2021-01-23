@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.WebMvc", "Faces.WebMv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.OrdersApi", "Ordering.OrdersApi\Ordering.OrdersApi.csproj", "{0C58E959-B00F-44DD-A63A-2AF7503624C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.EmailService", "Notifications.EmailService\Notifications.EmailService.csproj", "{839C83A5-A2D8-4B89-A2D0-54380B85DC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0C58E959-B00F-44DD-A63A-2AF7503624C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C58E959-B00F-44DD-A63A-2AF7503624C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C58E959-B00F-44DD-A63A-2AF7503624C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
