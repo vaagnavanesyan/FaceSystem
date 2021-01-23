@@ -44,7 +44,7 @@ namespace Faces.WebMvc.Controllers
             model.OrderId = Guid.NewGuid();
             model.ImageData = memory.ToArray();
             model.PictureUri = model.ImageFile.FileName;
-            var sendToUri = new Uri(RabbitmqMassTransitConstants.RabbitmqUri + RabbitmqMassTransitConstants.RegisterOrderCommandQueue);
+            var sendToUri = new Uri(RabbitmqMassTransitConstants.RabbitMqUri + RabbitmqMassTransitConstants.RegisterOrderCommandQueue);
             var endpoint = await _sendEndpointProvider.GetSendEndpoint(sendToUri);
             await endpoint.Send<IRegisterOrderCommand>(new
             {
