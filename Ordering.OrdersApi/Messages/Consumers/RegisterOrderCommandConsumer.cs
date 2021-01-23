@@ -1,4 +1,5 @@
 ﻿using Faces.Shared.Messaging.InterfacesConstants;
+using Faces.Shared.Messaging.InterfacesConstants.Events;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Ordering.OrdersApi.Models;
@@ -27,6 +28,17 @@ namespace Ordering.OrdersApi.Messages.Consumers
         {
             var order = context.Message;
             await SaveOrder(order);
+            var client = _clientFactory.CreateClient();
+            Dictionary<Guid, List<byte[]>> orderDetails = await GetFacesFromFacesApiAsync(client, order.ImageData, order.OrderId);
+            var faces = orderDetails[order.OrderId];
+            await SaveOrderDetails(order.OrderId, faces);
+            await context.Publish<IOrderProcessedEvent>(new
+            {
+                OrderId = order.OrderId,
+                order.UserEmail,
+                Faces = faces,
+                order.PictureUri
+            });
         }
 
         private async Task SaveOrder(IRegisterOrderCommand command)
@@ -40,10 +52,6 @@ namespace Ordering.OrdersApi.Messages.Consumers
             };
 
             await _orderRepository.RegisterOrder(order);
-            var client = _clientFactory.CreateClient();
-            Dictionary<Guid, List<byte[]>> orderDetails = await GetFacesFromFacesApiAsync(client, order.ImageData, order.OrderId);
-            var faces = orderDetails[order.OrderId];
-            await SaveOrderDetails(order.OrderId, faces);
         }
 
         private async Task<Dictionary<Guid, List<byte[]>>> GetFacesFromFacesApiAsync(HttpClient httpClient, byte[] imageData, Guid orderId)

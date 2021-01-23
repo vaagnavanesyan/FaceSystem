@@ -33,7 +33,7 @@ namespace Notifications.EmailService
                 int i = 1;
                 foreach (var attachment in message.Attachments)
                 {
-                    bodyBuilder.Attachments.Add("attachment" + i, attachment);
+                    bodyBuilder.Attachments.Add($"face-{i}.jpg", attachment);
                     i++;
                 }
             }
@@ -47,9 +47,7 @@ namespace Notifications.EmailService
             {
                 try
                 {
-                    await client.ConnectAsync(_emailConfig.SmtpServer, _emailConfig.Port, true);
-                    client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    await client.AuthenticateAsync(_emailConfig.Username, _emailConfig.Password);
+                    await client.ConnectAsync(_emailConfig.SmtpServer, _emailConfig.Port, false);
                     await client.SendAsync(emailMesage);
                 }
                 catch (Exception ex)

@@ -31,6 +31,7 @@ namespace Ordering.OrdersApi
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<RegisterOrderCommandConsumer>();
+                x.AddConsumer<OrderDispatchedEventConsumer>();
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
@@ -45,6 +46,13 @@ namespace Ordering.OrdersApi
                         e.PrefetchCount = 16;
                         e.UseMessageRetry(x => x.Interval(2, TimeSpan.FromSeconds(10)));
                         e.ConfigureConsumer<RegisterOrderCommandConsumer>(context);
+                    });
+
+                    cfg.ReceiveEndpoint(RabbitmqMassTransitConstants.OrderDispatchedServiceQueue, e =>
+                    {
+                        e.PrefetchCount = 16;
+                        e.UseMessageRetry(x => x.Interval(2, TimeSpan.FromSeconds(100)));
+                        e.ConfigureConsumer<OrderDispatchedEventConsumer>(context);
                     });
                 });
             });
