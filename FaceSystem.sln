@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.OrdersApi", "Order
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.EmailService", "Notifications.EmailService\Notifications.EmailService.csproj", "{839C83A5-A2D8-4B89-A2D0-54380B85DC81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.NotificationService", "Notifications.NotificationService\Notifications.NotificationService.csproj", "{FAE1C7F4-70AD-40D0-A08C-40B03F8D94CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{839C83A5-A2D8-4B89-A2D0-54380B85DC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAE1C7F4-70AD-40D0-A08C-40B03F8D94CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE1C7F4-70AD-40D0-A08C-40B03F8D94CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE1C7F4-70AD-40D0-A08C-40B03F8D94CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE1C7F4-70AD-40D0-A08C-40B03F8D94CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
