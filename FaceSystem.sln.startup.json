@@ -1,0 +1,36 @@
+﻿{
+  "Version": 3,
+  "ListAllProjects": false,
+  "MultiProjectConfigurations": {
+    "Start Projects (Debug, IIS)": {
+       "SolutionConfiguration": "Debug",
+      "Projects": {
+        "Faces.FacesApi": {
+          "ProfileName": "IIS Express"
+        },
+        "Faces.WebMvc": {
+          "ProfileName": "IIS Express"
+        },
+        "Ordering.OrdersApi": {
+          "ProfileName": "IIS Express"
+        },
+        "Notifications.NotificationService": {}
+      }
+    },
+    "Start Projects (Debug)": {
+      "SolutionConfiguration": "Debug",
+      "Projects": {
+        "Faces.FacesApi": {
+          "ProfileName": "Faces.FacesApi"
+        },
+        "Faces.WebMvc": {
+          "ProfileName": "Faces.WebMvc"
+        },
+        "Ordering.OrdersApi": {
+          "ProfileName": "Ordering.OrdersApi"
+        },
+        "Notifications.NotificationService": {}
+      }
+    }
+  }
+}

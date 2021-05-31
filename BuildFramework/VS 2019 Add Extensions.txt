@@ -1,0 +1,1 @@
+https://marketplace.visualstudio.com/_apis/public/gallery/publishers/vs-publisher-141975/vsextensions/SwitchStartupProjectForVS2019/4.1.71/vspackage

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "FacesApi": {
+    "Faces.FacesApi": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5600",
